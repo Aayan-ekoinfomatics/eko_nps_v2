@@ -14,197 +14,16 @@ const ReviewsTable = () => {
 
     const [toggleDurationPopup, setToggleDurationPopup] = useState(false);
 
-    const [activeDuration, setActiveDuration] = useState('3m+');
-
-    const comments = [
-        {
-            id: 1,
-            review: 'Review 1: Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor atque fuga quos ipsa expedita. Aperiam optio dolores minus necessitatibus quibusdam.',
-            comment: 'Comment 1: Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor atque fuga quos ipsa expedita.',
-            duration: '3m',
-        },
-        {
-            id: 2,
-            review: 'Review 2: Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor atque fuga quos ipsa expedita. Aperiam optio dolores minus necessitatibus quibusdam.',
-            comment: 'Comment 2: Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor atque fuga quos ipsa expedita.',
-            duration: '1m',
-        },
-        {
-            id: 3,
-            review: 'Review 3: Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor atque fuga quos ipsa expedita. Aperiam optio dolores minus necessitatibus quibusdam.',
-            comment: 'Comment 3: Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor atque fuga quos ipsa expedita.',
-            duration: '3m',
-        },
-        {
-            id: 4,
-            review: 'Review 4: Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor atque fuga quos ipsa expedita. Aperiam optio dolores minus necessitatibus quibusdam.',
-            comment: 'Comment 4: Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor atque fuga quos ipsa expedita.',
-            duration: '2w',
-        },
-        {
-            id: 5,
-            review: 'Review 5: Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor atque fuga quos ipsa expedita. Aperiam optio dolores minus necessitatibus quibusdam.',
-            comment: 'Comment 5: Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor atque fuga quos ipsa expedita.',
-            duration: '1m',
-        },
-        {
-            id: 6,
-            review: 'Review 6: Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor atque fuga quos ipsa expedita. Aperiam optio dolores minus necessitatibus quibusdam.',
-            comment: 'Comment 6: Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor atque fuga quos ipsa expedita.',
-            duration: '1w',
-        },
-        {
-            id: 7,
-            review: 'Review 7: Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor atque fuga quos ipsa expedita. Aperiam optio dolores minus necessitatibus quibusdam.',
-            comment: 'Comment 7: Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor atque fuga quos ipsa expedita.',
-            duration: '1w',
-        },
-        {
-            id: 8,
-            review: 'Review 8: Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor atque fuga quos ipsa expedita. Aperiam optio dolores minus necessitatibus quibusdam.',
-            comment: 'Comment 8: Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor atque fuga quos ipsa expedita.',
-            duration: '3m',
-        },
-        {
-            id: 9,
-            review: 'Review 9: Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor atque fuga quos ipsa expedita. Aperiam optio dolores minus necessitatibus quibusdam.',
-            comment: 'Comment 9: Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor atque fuga quos ipsa expedita.',
-            duration: '2w',
-        },
-        {
-            id: 10,
-            review: 'Review 10: Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor atque fuga quos ipsa expedita. Aperiam optio dolores minus necessitatibus quibusdam.',
-            comment: 'Comment 10: Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor atque fuga quos ipsa expedita.',
-            duration: '3m',
-        },
-        {
-            id: 11,
-            review: 'Review 11: Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor atque fuga quos ipsa expedita. Aperiam optio dolores minus necessitatibus quibusdam.',
-            comment: 'Comment 11: Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor atque fuga quos ipsa expedita.',
-            duration: '1m',
-        },
-        {
-            id: 12,
-            review: 'Review 12: Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor atque fuga quos ipsa expedita. Aperiam optio dolores minus necessitatibus quibusdam.',
-            comment: 'Comment 12: Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor atque fuga quos ipsa expedita.',
-            duration: '1w',
-        },
-        {
-            id: 13,
-            review: 'Review 13: Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor atque fuga quos ipsa expedita. Aperiam optio dolores minus necessitatibus quibusdam.',
-            comment: 'Comment 13: Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor atque fuga quos ipsa expedita.',
-            duration: '3m',
-        },
-        {
-            id: 14,
-            review: 'Review 14: Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor atque fuga quos ipsa expedita. Aperiam optio dolores minus necessitatibus quibusdam.',
-            comment: 'Comment 14: Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor atque fuga quos ipsa expedita.',
-            duration: '3m',
-        },
-        {
-            id: 15,
-            review: 'Review 15: Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor atque fuga quos ipsa expedita. Aperiam optio dolores minus necessitatibus quibusdam.',
-            comment: 'Comment 15: Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor atque fuga quos ipsa expedita.',
-            duration: '3m',
-        },
-        {
-            id: 16,
-            review: 'Review 1: Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor atque fuga quos ipsa expedita. Aperiam optio dolores minus necessitatibus quibusdam.',
-            comment: 'Comment 1: Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor atque fuga quos ipsa expedita.',
-            duration: '2w',
-        },
-        {
-            id: 17,
-            review: 'Review 2: Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor atque fuga quos ipsa expedita. Aperiam optio dolores minus necessitatibus quibusdam.',
-            comment: 'Comment 2: Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor atque fuga quos ipsa expedita.',
-            duration: '1w',
-        },
-        {
-            id: 18,
-            review: 'Review 3: Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor atque fuga quos ipsa expedita. Aperiam optio dolores minus necessitatibus quibusdam.',
-            comment: 'Comment 3: Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor atque fuga quos ipsa expedita.',
-            duration: '2w',
-        },
-        {
-            id: 19,
-            review: 'Review 4: Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor atque fuga quos ipsa expedita. Aperiam optio dolores minus necessitatibus quibusdam.',
-            comment: 'Comment 4: Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor atque fuga quos ipsa expedita.',
-            duration: '3m',
-        },
-        {
-            id: 20,
-            review: 'Review 76: Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor atque fuga quos ipsa expedita. Aperiam optio dolores minus necessitatibus quibusdam.',
-            comment: 'Comment 5: Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor atque fuga quos ipsa expedita.',
-            duration: '1m',
-        },
-        {
-            id: 21,
-            review: 'Review 6: Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor atque fuga quos ipsa expedita. Aperiam optio dolores minus necessitatibus quibusdam.',
-            comment: 'Comment 6: Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor atque fuga quos ipsa expedita.',
-            duration: '1m',
-        },
-        {
-            id: 22,
-            review: 'Review 7: Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor atque fuga quos ipsa expedita. Aperiam optio dolores minus necessitatibus quibusdam.',
-            comment: 'Comment 7: Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor atque fuga quos ipsa expedita.',
-            duration: '1m',
-        },
-        {
-            id: 23,
-            review: 'Review 8: Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor atque fuga quos ipsa expedita. Aperiam optio dolores minus necessitatibus quibusdam.',
-            comment: 'Comment 8: Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor atque fuga quos ipsa expedita.',
-            duration: '1w',
-        },
-        {
-            id: 24,
-            review: 'Review 9: Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor atque fuga quos ipsa expedita. Aperiam optio dolores minus necessitatibus quibusdam.',
-            comment: 'Comment 9: Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor atque fuga quos ipsa expedita.',
-            duration: '3m',
-        },
-        {
-            id: 25,
-            review: 'Review 10: Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor atque fuga quos ipsa expedita. Aperiam optio dolores minus necessitatibus quibusdam.',
-            comment: 'Comment 10: Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor atque fuga quos ipsa expedita.',
-            duration: '1w',
-        },
-        {
-            id: 26,
-            review: 'Review 11: Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor atque fuga quos ipsa expedita. Aperiam optio dolores minus necessitatibus quibusdam.',
-            comment: 'Comment 11: Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor atque fuga quos ipsa expedita.',
-            duration: '2w',
-        },
-        {
-            id: 27,
-            review: 'Review 12: Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor atque fuga quos ipsa expedita. Aperiam optio dolores minus necessitatibus quibusdam.',
-            comment: 'Comment 12: Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor atque fuga quos ipsa expedita.',
-            duration: '3m',
-        },
-        {
-            id: 28,
-            review: 'Review 13: Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor atque fuga quos ipsa expedita. Aperiam optio dolores minus necessitatibus quibusdam.',
-            comment: 'Comment 13: Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor atque fuga quos ipsa expedita.',
-            duration: '3m',
-        },
-        {
-            id: 29,
-            review: 'Review 14: Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor atque fuga quos ipsa expedita. Aperiam optio dolores minus necessitatibus quibusdam.',
-            comment: 'Comment 14: Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor atque fuga quos ipsa expedita.',
-            duration: '2w',
-        },
-        {
-            id: 30,
-            review: 'Review 15: Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor atque fuga quos ipsa expedita. Aperiam optio dolores minus necessitatibus quibusdam.',
-            comment: 'Comment 15: Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor atque fuga quos ipsa expedita.',
-            duration: '1m',
-        }
-    ];
+    const [activeDuration, setActiveDuration] = useState('1m');
 
     const commentData = [
         { id: 0, duration: '1w' },
         { id: 1, duration: '2w' },
         { id: 2, duration: '1m' },
         { id: 3, duration: '3m' },
-        { id: 4, duration: '3m+' },
+        { id: 4, duration: '6m' },
+        { id: 5, duration: '1y' },
+        { id: 6, duration: '1y+' },
     ];
 
     const handleEditReviewClick = (id) => {
@@ -221,34 +40,81 @@ const ReviewsTable = () => {
     };
 
     const getTimeDifference = (timestamp) => {
-        const currentDate = new Date();
-        currentDate.setFullYear(2002, 0, 1);
-        const inputDate = new Date(timestamp);
-        console.log(currentDate);
-        const timeDifferenceInMilliseconds = currentDate - inputDate;
-        const timeDifferenceInDays = timeDifferenceInMilliseconds / (1000 * 60 * 60 * 24);
+        const currentDate = new Date('January 1, 2023');
+        const reviewDate = new Date(timestamp + ' 00:00:00 GMT+0000'); // Append time and timezone for correct parsing
 
-        if (timeDifferenceInDays <= 7) {
-            return '1w';
-        } else if (timeDifferenceInDays <= 14) {
-            return '2w';
-        } else if (timeDifferenceInDays <= 30) {
-            return '1m';
-        } else if (timeDifferenceInDays <= 90) {
+        // Calculate the difference in milliseconds
+        const differenceInMilliseconds = currentDate - reviewDate;
+
+        // Convert milliseconds to weeks, months, and years
+        const weeks = Math.floor(differenceInMilliseconds / (1000 * 60 * 60 * 24 * 7));
+        const months = Math.floor(differenceInMilliseconds / (1000 * 60 * 60 * 24 * 30));
+        const years = Math.floor(differenceInMilliseconds / (1000 * 60 * 60 * 24 * 365));
+
+        // Determine the appropriate label
+        if (years > 1) {
+            return '1y+';
+        } else if (years === 1) {
+            return '1y';
+        } else if (months >= 6) {
+            return '6m';
+        } else if (months >= 3) {
             return '3m';
+        } else if (weeks >= 2) {
+            return '2w';
         } else {
-            // You can add more conditions if needed
-            return '3m+';
+            return '1w';
         }
     };
 
+
     useEffect(() => {
-        // setReviewData(comments)
         axios.post(topAlerts).then((res) => {
-            // console.log(res?.data);
             setReviewData(res?.data?.data)
-            // console.log(getTimeDifference(res?.data?.data[0]?.timestamp))
         })
+    }, [])
+
+    const handleFilterDate = (filterValue) => {
+
+        const currentDate = new Date('December 31, 2022');
+
+        const reviewTimestamp = filterValue?.timestamp;
+        let dateArray = reviewTimestamp.split('-');
+        let monthAbbreviation = dateArray[0];
+        let year = dateArray[1];
+
+        const reviewDate = new Date(Date.parse(monthAbbreviation + ' 01, ' + year));
+
+        // console.log(reviewDate , currentDate);
+
+        var millisecondsPerWeek = 1000 * 60 * 60 * 24 * 7;
+        var millisecondsPerMonth = 1000 * 60 * 60 * 24 * 30.44; // An average month length
+        var millisecondsPerYear = 1000 * 60 * 60 * 24 * 365.25; // An average year length
+
+        var timeDifference = currentDate - reviewDate;
+
+        if (timeDifference < 2 * millisecondsPerWeek) {
+            return '1w';
+        } else if (timeDifference < 3 * millisecondsPerWeek) {
+            return '2w';
+        } else if (timeDifference < 2 * millisecondsPerMonth) {
+            return '1m';
+        } else if (timeDifference < 4 * millisecondsPerMonth) {
+            return '3m';
+        } else if (timeDifference < 7 * millisecondsPerMonth) {
+            return '6m';
+        } else if (timeDifference < 2 * millisecondsPerYear) {
+            return '1y';
+        } else {
+            return '1y+';
+        }
+
+    };
+
+    useEffect(() => {
+        const obj = reviewData?.find((filterValue) => getTimeDifference(filterValue?.timestamp));
+
+        console.log(getTimeDifference(obj?.timestamp), activeDuration);
     }, [])
 
     return (
@@ -262,14 +128,14 @@ const ReviewsTable = () => {
                         <span className={`absolute top-[19%] right-1 cursor-pointer flex justify-center items-center  ${toggleDurationPopup ? 'rotate-180' : ''} transition-all duration-150 ease-in-out`}>
                             <FaCaretDown size={20} />
                         </span>
-                        <div className={`w-full absolute top-[104%] left-0 bg-gray-200 rounded-[7px] transition-all duration-150 ease-in-out overflow-hidden ${toggleDurationPopup ? 'h-[168px]' : 'h-0'}`}>
+                        <div className={`w-full absolute top-[104%] left-0 bg-gray-200 rounded-[7px] transition-all duration-150 ease-in-out overflow-hidden ${toggleDurationPopup ? 'h-[210px]' : 'h-0'}`}>
                             <div className='w-full flex flex-col'>
                                 {
                                     commentData?.map((data, i) => (
                                         <h1 key={i} onClick={() => {
                                             setActiveDuration(data?.duration);
                                             setToggleDurationPopup(false);
-                                        }} className={`text-[14px] font-[500] hover:text-white hover:bg-[color:var(--primary-color)] cursor-pointer text-center border-b py-1.5 ${data?.id == 0 ? 'rounded-t-[7px]' : data?.id == 4 ? 'rounded-b-[7px]' : ''}`}>{data?.duration}</h1>
+                                        }} className={`text-[14px] font-[500] hover:text-white hover:bg-[color:var(--primary-color)] cursor-pointer text-center border-b py-1.5 ${data?.id == 0 ? 'rounded-t-[7px]' : data?.id == 6 ? 'rounded-b-[7px]' : ''}`}>{data?.duration}</h1>
                                     ))
                                 }
                             </div>
@@ -291,11 +157,12 @@ const ReviewsTable = () => {
                     {
                         (() => {
                             // Check if any comments match the condition
-                            const hasMatchingComments = reviewData?.find((filterValue) => getTimeDifference(filterValue?.timestamp) === activeDuration);
+                            const hasMatchingComments = reviewData?.filter((filterValue) => handleFilterDate(filterValue) === activeDuration);
 
                             // Render based on the condition
-                            if (hasMatchingComments) {
-                                return reviewData.map((data, i) => (
+                            if (hasMatchingComments && hasMatchingComments?.length > 0) {
+                                // if (hasMatchingComments) {
+                                return hasMatchingComments?.map((data, i) => (
                                     <div key={i} className='w-full grid grid-cols-[1fr_1fr_15%] gap-10 mb-8'>
                                         <div className='w-full'>
                                             <h1 className='text-[14px] font-[400]'>{data?.review1}</h1>
@@ -346,23 +213,39 @@ const ReviewsTable = () => {
                 </div>
                 <div className='w-full'>
                     {
-                        reviewData?.filter((filterValue => filterValue?.duration === activeDuration))?.map((data, i) => (
-                            <div key={data?.id} className='w-full mb-6 border border-[color:var(--primary-color)] rounded-[7px] p-4'>
-                                <div key={data?.id} className='w-full flex flex-col'>
-                                    <div className='w-full flex flex-col justify-normal border-b border-gray-300 pb-3'>
-                                        <h1 className='text-[14px] font-[700] text-gray-800 mb-1'>Review</h1>
-                                        <h1 className='text-[15px] text-gray-800'>{data?.review}</h1>
+                        (() => {
+                            // Check if any comments match the condition
+                            const hasMatchingComments = reviewData?.filter((filterValue) => handleFilterDate(filterValue) === activeDuration);
+
+                            // Render based on the condition
+                            if (hasMatchingComments && hasMatchingComments?.length > 0) {
+                                // if (hasMatchingComments) {
+                                return hasMatchingComments?.map((data, i) => (
+                                    <div key={data?.id} className='w-full mb-6 border border-[color:var(--primary-color)] rounded-[7px] p-4'>
+                                        <div key={data?.id} className='w-full flex flex-col'>
+                                            <div className='w-full flex flex-col justify-normal border-b border-gray-300 pb-3'>
+                                                <h1 className='text-[14px] font-[700] text-gray-800 mb-1'>Review</h1>
+                                                <h1 className='text-[15px] text-gray-800'>{data?.review}</h1>
+                                            </div>
+                                            <div className='w-full flex flex-col justify-normal pt-3'>
+                                                <h1 className='text-[14px] font-[700] text-gray-800 mb-1'>Comment</h1>
+                                                <h1 className='text-[15px] text-gray-800'>{data?.comment}</h1>
+                                            </div>
+                                        </div>
+                                        <div className='w-full flex justify-end items-center mt-5'>
+                                            <button onClick={() => handleEditReviewClick(data?.id)} className='px-6 py-2 bg-blue-200 text-[14px] font-[400] rounded-[7px] active:scale-95 transition-all duration-300 ease-in-out'>Reject / Edit</button>
+                                        </div>
                                     </div>
-                                    <div className='w-full flex flex-col justify-normal pt-3'>
-                                        <h1 className='text-[14px] font-[700] text-gray-800 mb-1'>Comment</h1>
-                                        <h1 className='text-[15px] text-gray-800'>{data?.comment}</h1>
+                                ));
+                            } else {
+                                // Render "No comments found" if no matching comments
+                                return (
+                                    <div className='w-full flex justify-center items-center h-[300px]'>
+                                        <h1>No comments found!</h1>
                                     </div>
-                                </div>
-                                <div className='w-full flex justify-end items-center mt-5'>
-                                    <button onClick={() => handleEditReviewClick(data?.id)} className='px-6 py-2 bg-blue-200 text-[14px] font-[400] rounded-[7px] active:scale-95 transition-all duration-300 ease-in-out'>Reject / Edit</button>
-                                </div>
-                            </div>
-                        ))
+                                );
+                            }
+                        })()
                     }
                 </div>
             </div>
