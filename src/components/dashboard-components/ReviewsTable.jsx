@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import cross from '../../assets/icons/cross.png'
 import { FaCaretDown } from "react-icons/fa6";
+import axios from 'axios';
+import { topAlerts } from '../../utils/eversideCommentsApi';
 
 const ReviewsTable = () => {
 
@@ -12,7 +14,7 @@ const ReviewsTable = () => {
 
     const [toggleDurationPopup, setToggleDurationPopup] = useState(false);
 
-    const [activeDuration, setActiveDuration] = useState('1w');
+    const [activeDuration, setActiveDuration] = useState('3m+');
 
     const comments = [
         {
@@ -202,23 +204,51 @@ const ReviewsTable = () => {
         { id: 1, duration: '2w' },
         { id: 2, duration: '1m' },
         { id: 3, duration: '3m' },
+        { id: 4, duration: '3m+' },
     ];
 
     const handleEditReviewClick = (id) => {
         setActiveReviewId(id);
-        setEditedComment(reviewData?.find((findData) => findData?.id == id)?.comment);
+        setEditedComment(reviewData?.find((findData) => findData?.id == id)?.review);
     }
 
     const handleSubmit = () => {
         const updatedReviewData = reviewData.map((item) =>
-            item.id === activeReviewId ? { ...item, comment: editedComment } : item
+            item.id === activeReviewId ? { ...item, review: editedComment } : item
         );
         setReviewData(updatedReviewData);
         setActiveReviewId(null);
     };
 
+    const getTimeDifference = (timestamp) => {
+        const currentDate = new Date();
+        currentDate.setFullYear(2002, 0, 1);
+        const inputDate = new Date(timestamp);
+        console.log(currentDate);
+        const timeDifferenceInMilliseconds = currentDate - inputDate;
+        const timeDifferenceInDays = timeDifferenceInMilliseconds / (1000 * 60 * 60 * 24);
+
+        if (timeDifferenceInDays <= 7) {
+            return '1w';
+        } else if (timeDifferenceInDays <= 14) {
+            return '2w';
+        } else if (timeDifferenceInDays <= 30) {
+            return '1m';
+        } else if (timeDifferenceInDays <= 90) {
+            return '3m';
+        } else {
+            // You can add more conditions if needed
+            return '3m+';
+        }
+    };
+
     useEffect(() => {
-        setReviewData(comments)
+        // setReviewData(comments)
+        axios.post(topAlerts).then((res) => {
+            // console.log(res?.data);
+            setReviewData(res?.data?.data)
+            // console.log(getTimeDifference(res?.data?.data[0]?.timestamp))
+        })
     }, [])
 
     return (
@@ -232,21 +262,21 @@ const ReviewsTable = () => {
                         <span className={`absolute top-[19%] right-1 cursor-pointer flex justify-center items-center  ${toggleDurationPopup ? 'rotate-180' : ''} transition-all duration-150 ease-in-out`}>
                             <FaCaretDown size={20} />
                         </span>
-                        <div className={`w-full absolute top-[104%] left-0 bg-gray-200 rounded-[7px] transition-all duration-150 ease-in-out overflow-hidden ${toggleDurationPopup ? 'h-[133px]' : 'h-0'}`}>
+                        <div className={`w-full absolute top-[104%] left-0 bg-gray-200 rounded-[7px] transition-all duration-150 ease-in-out overflow-hidden ${toggleDurationPopup ? 'h-[168px]' : 'h-0'}`}>
                             <div className='w-full flex flex-col'>
                                 {
                                     commentData?.map((data, i) => (
                                         <h1 key={i} onClick={() => {
                                             setActiveDuration(data?.duration);
                                             setToggleDurationPopup(false);
-                                        }} className={`text-[14px] font-[500] hover:text-white hover:bg-[color:var(--primary-color)] cursor-pointer text-center border-b py-1.5 ${data?.id == 0 ? 'rounded-t-[7px]' : data?.id == 3 ? 'rounded-b-[7px]' : ''}`}>{data?.duration}</h1>
+                                        }} className={`text-[14px] font-[500] hover:text-white hover:bg-[color:var(--primary-color)] cursor-pointer text-center border-b py-1.5 ${data?.id == 0 ? 'rounded-t-[7px]' : data?.id == 4 ? 'rounded-b-[7px]' : ''}`}>{data?.duration}</h1>
                                     ))
                                 }
                             </div>
                         </div>
                     </div>
                 </div>
-                <div className='w-full grid grid-cols-[1fr_1fr_200px] gap-5 pb-5 pt-2'>
+                <div className='w-full grid grid-cols-[1fr_1fr_15%] gap-5 pb-5 pt-2'>
                     <div className='w-full'>
                         <h1 className='text-[16px] font-[600] text-black'>Reviews</h1>
                     </div>
@@ -259,21 +289,39 @@ const ReviewsTable = () => {
                 </div>
                 <div className='w-full border-t-2 border-t-[#afd8ff] pt-5 max-h-[400px] overflow-y-scroll'>
                     {
-                        reviewData?.filter((filterValue => filterValue?.duration === activeDuration))?.map((data, i) => (
-                            <div className='w-full grid grid-cols-[1fr_1fr_200px] gap-10 mb-8'>
-                                <div className='w-full'>
-                                    <h1 className='text-[14px] font-[400]'>{data?.review}</h1>
-                                </div>
-                                <div className='w-full'>
-                                    <h1 className='text-[14px] font-[400]'>{data?.comment}</h1>
-                                </div>
-                                <div className='w-full text-center'>
-                                    <button onClick={() => handleEditReviewClick(data?.id)} className='px-6 py-2 bg-blue-200 text-[14px] font-[400] rounded-[7px] active:scale-95 transition-all duration-300 ease-in-out'>Reject / Edit</button>
-                                </div>
-                            </div>
-                        ))
+                        (() => {
+                            // Check if any comments match the condition
+                            const hasMatchingComments = reviewData?.find((filterValue) => getTimeDifference(filterValue?.timestamp) === activeDuration);
+
+                            // Render based on the condition
+                            if (hasMatchingComments) {
+                                return reviewData.map((data, i) => (
+                                    <div key={i} className='w-full grid grid-cols-[1fr_1fr_15%] gap-10 mb-8'>
+                                        <div className='w-full'>
+                                            <h1 className='text-[14px] font-[400]'>{data?.review1}</h1>
+                                        </div>
+                                        <div className='w-full'>
+                                            <h1 className='text-[14px] font-[400]'>{data?.review}</h1>
+                                        </div>
+                                        <div className='w-full text-center'>
+                                            <button onClick={() => handleEditReviewClick(data?.id)} className='px-6 py-2 shadow-md bg-blue-200 text-[14px] font-[400] rounded-[7px] active:scale-95 transition-all duration-300 ease-in-out'>
+                                                Reject / Edit
+                                            </button>
+                                        </div>
+                                    </div>
+                                ));
+                            } else {
+                                // Render "No comments found" if no matching comments
+                                return (
+                                    <div className='w-full flex justify-center items-center h-[300px]'>
+                                        <h1>No comments found!</h1>
+                                    </div>
+                                );
+                            }
+                        })()
                     }
                 </div>
+
             </div>
 
             {/* mobile reviews table */}

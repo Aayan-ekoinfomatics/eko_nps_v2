@@ -42,7 +42,7 @@ const Dashboard = () => {
   ];
 
   return (
-    <div className='bg-[#e3eaff] w-full flex relative overflow-x-hidden'>
+    <div className='bg-[#e3eaff] w-full flex relative overflow-x-hidden min-h-screen'>
       {/* <div className='w-full h-[30vh] bg-[#d2e1ff] absolute top-0 rounded-b-[60%] z-0'></div> */}
       <Sidebar />
       <div className='w-full z-10 p-10 sm:pl-[100px] lg:pl-[270px] xl:pl-[380px] sm:mr-5'>
