@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { FaCaretDown } from "react-icons/fa6";
 
 const topreviews = [
     {
@@ -56,7 +57,9 @@ const CommentsTab = () => {
                     <h1>in last</h1>
                     <div className='w-full max-w-[80px] bg-gray-100 px-3 py-1 rounded-[8px] relative cursor-pointer' onClick={() => setToggleDurationPopup(!toggleDurationPopup)}>
                         {commentData[activeDurationIndex]?.duration}
-                        <span className='absolute top-1 right-1 cursor-pointer'>▼</span>
+                        <span className={`absolute top-[19%] right-1 cursor-pointer flex justify-center items-center  ${toggleDurationPopup ? 'rotate-180' : ''} transition-all duration-150 ease-in-out`}>
+                            <FaCaretDown size={20} />
+                        </span>
                         <div className={`w-full absolute top-[104%] left-0 bg-gray-200 rounded-[7px] transition-all duration-150 ease-in-out overflow-hidden ${toggleDurationPopup ? 'h-[133px]' : 'h-0'}`}>
                             <div className='w-full flex flex-col'>
                                 {
