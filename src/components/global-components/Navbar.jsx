@@ -8,7 +8,7 @@ const Navbar = () => {
     const navigate = useNavigate()
 
     return (
-        <div className='fixed top-0 bg-[#f2f5ff] z-[200] max-w-[100vw] w-full'>
+        <div className='fixed top-0 bg-[#fff] z-[200] max-w-[100vw] w-full'>
             <div className='w-full px-5 md:px-10 xl:px-16 py-5 flex justify-between items-center'>
                 <div className=''>
                     <div className='w-fit flex flex-col items-center'>

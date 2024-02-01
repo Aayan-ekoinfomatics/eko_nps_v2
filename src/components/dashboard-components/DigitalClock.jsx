@@ -4,19 +4,14 @@ const DigitalClock = () => {
   const [currentTime, setCurrentTime] = useState(new Date());
 
   useEffect(() => {
-    // Update the time every second
     const intervalId = setInterval(() => {
       setCurrentTime(new Date());
     }, 1000);
 
-    // Cleanup the interval when the component is unmounted
     return () => clearInterval(intervalId);
-  }, []); // Empty dependency array ensures that the effect runs only once when the component mounts
+  }, []);
 
-  // Format the time in HH:mm:ss format
   const formattedTime = currentTime.toLocaleTimeString();
-
-  // Format the date in a readable format (e.g., January 29, 2024)
   const formattedDate = currentTime.toLocaleDateString('en-US', {
     weekday: 'long',
     year: 'numeric',

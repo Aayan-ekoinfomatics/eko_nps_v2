@@ -1,33 +1,6 @@
 import React, { useState } from 'react';
 import { FaCaretDown } from "react-icons/fa6";
 
-const topreviews = [
-    {
-        id: 0,
-        review: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor atque fuga quos ipsa expedita. Aperiam optio dolores minus necessitatibus quibusdam.',
-        stars: 4,
-        image: '',
-    },
-    {
-        id: 1,
-        review: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor atque fuga quos ipsa expedita. Aperiam optio dolores minus necessitatibus quibusdam.',
-        stars: 4,
-        image: '',
-    },
-    {
-        id: 2,
-        review: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor atque fuga quos ipsa expedita. Aperiam optio dolores minus necessitatibus quibusdam.',
-        stars: 4,
-        image: '',
-    },
-    {
-        id: 3,
-        review: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor atque fuga quos ipsa expedita. Aperiam optio dolores minus necessitatibus quibusdam.',
-        stars: 4,
-        image: '',
-    },
-];
-
 const commentData = [
     { id: 0, comments: 14, duration: '1w' },
     { id: 1, comments: 49, duration: '2w' },
